@@ -1,3 +1,4 @@
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,7 +14,7 @@ public class DialogBox extends HBox {
         text = new Label(s);
         displayPicture = new ImageView(i);
 
-         //Styling the dialog box
+        //Styling the dialog box
         text.setWrapText(true);
         displayPicture.setFitWidth(100.0);
         displayPicture.setFitHeight(100.0);
