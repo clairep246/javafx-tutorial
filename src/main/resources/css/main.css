@@ -34,7 +34,6 @@
     -fx-background-color: transparent;
 }
 
-
 .scroll-bar {
     -fx-font-size: 10px;  /* Change width of scroll bar. */
     -fx-background-color: main-color;
@@ -50,5 +49,9 @@
 .scroll-bar .decrement-button {
     -fx-pref-height: 0;
     -fx-opacity: 0;
+}
+
+.text-field {
+    -fx-prompt-text-fill: #888888;
 }
 
