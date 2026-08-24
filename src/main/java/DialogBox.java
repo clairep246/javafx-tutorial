@@ -13,7 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 /**
- * Represents a dialog box consisting of an ImageView to represent the speaker's face
+ * Represents a dialog box consisting of an ImageView to represent the speaker's
+ * face
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
@@ -37,22 +38,42 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Flips the dialog box such that the ImageView is on the left and text on the right.
+     * Flips the dialog box such that the ImageView is on the left and text on the
+     * right.
      */
     private void flip() {
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
+        dialog.getStyleClass().add("reply-label");
+    }
+
+    private void changeDialogStyle(String commandType) {
+        switch (commandType) {
+            case "addCommand":
+                dialog.getStyleClass().add("add-label");
+                break;
+            case "changeMarkCommand":
+                dialog.getStyleClass().add("marked-label");
+                break;
+            case "deleteCommand":
+                dialog.getStyleClass().add("delete-label");
+                break;
+            default:
+                // Do nothing
+        }
+    }
+
+    // ...
+    public static DialogBox getDukeDialog(String text, Image img, String commandType) {
+        var db = new DialogBox(text, img);
+        db.flip();
+        db.changeDialogStyle(commandType);
+        return db;
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
-    }
-
-    public static DialogBox getDukeDialog(String text, Image img) {
-        var db = new DialogBox(text, img);
-        db.flip();
-        return db;
     }
 }

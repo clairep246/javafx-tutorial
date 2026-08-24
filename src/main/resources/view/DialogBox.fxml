@@ -20,6 +20,7 @@
                text="Label"
                wrapText="true"
                minHeight="-Infinity"/>
+        
         <ImageView fx:id="displayPicture"
                    fitHeight="99.0"
                    fitWidth="99.0"
