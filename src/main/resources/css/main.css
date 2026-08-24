@@ -1,6 +1,16 @@
 .root {
-    main-color: rgb(237, 255, 242);       /* Create a looked-up color called "main-color" within root. */
+    main-color: rgb(237, 255, 242);
     -fx-background-color: main-color;
+    -fx-background-image: url("../images/DaDuke.png"); /* Set image */
+    -fx-background-size: cover;
+}
+
+.scroll-pane {
+    -fx-background-color: rgba(0,0,0,.5);
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
 }
 
 .text-field {
