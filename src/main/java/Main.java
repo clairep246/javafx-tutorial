@@ -22,6 +22,7 @@ public class Main extends Application {
 
     private Image dukeImage = new Image(
             this.getClass().getResourceAsStream("/images/DaUser.png"));
+    private Duke duke = new Duke();
 
     @Override
     public void start(Stage stage) {
@@ -34,13 +35,10 @@ public class Main extends Application {
         userInput = new TextField();
         sendButton = new Button("Send");
 
-        DialogBox dialogBox = new DialogBox("Hello!", userImage);
-        dialogContainer.getChildren().addAll(dialogBox);
-
         AnchorPane mainLayout = new AnchorPane();
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
 
-          //Formatting the window to look as expected
+        // Formatting the window to look as expected
 
         stage.setTitle("Duke");
         stage.setResizable(false);
@@ -75,6 +73,31 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        // More code to be added here later
+        // Handling user input
+
+        sendButton.setOnMouseClicked((event) -> {
+            handleUserInput();
+        });
+
+        userInput.setOnAction((event) -> {
+            handleUserInput();
+        });
+
+        // Scroll down to the end every time dialogContainer's height changes.
+        dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
     }
+
+    /**
+     * Creates a dialog box containing user input, and appends it to
+     * the dialog container. Clears the user input after processing.
+     */
+    private void handleUserInput() {
+        String userText = userInput.getText();
+        String dukeText = duke.getResponse(userInput.getText());
+        dialogContainer.getChildren().addAll(
+                new DialogBox(userText, userImage),
+                new DialogBox(dukeText, dukeImage));
+        userInput.clear();
+    }
+
 }
